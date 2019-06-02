@@ -3,8 +3,8 @@ import numpy as np
 import math
 import scipy.stats
 
-#treefile = open("C:\\Users\\nkolarik\\Desktop\\TomSawyer\\output\\November\\ENVI_LiDAR\\field_trees.csv", 'r')
-treefile = open("C:\\Users\\nkolarik\\Desktop\\TomSawyer\\output\\July\\ENVI_LiDAR\\field_trees.csv", 'r')
+treefile = open("C:\\Users\\nkolarik\\Desktop\\TomSawyer\\output\\November\\ENVI_LiDAR\\field_trees.csv", 'r')
+#treefile = open("C:\\Users\\nkolarik\\Desktop\\TomSawyer\\output\\July\\ENVI_LiDAR\\field_trees.csv", 'r')
 
 tree_data = np.genfromtxt(treefile, delimiter = ",")
 
@@ -18,8 +18,8 @@ radii = [15, 18, 21, 24, 27]
 subplots = [321, 322, 323, 324, 325]
 colors = ["b", "g", "r", "magenta", "purple"]
 titles = ["RGB", "Green", "Red", "Red Edge", "NIR"]
-#panels = ["a", "b", "c", "d", "e"]
-panels = ["f", "g", "h", "i", "j"]
+panels = ["(a)", "(b)", "(c)", "(d)", "(e)"]
+#panels = ["(f)", "(g)", "(h)", "(i)", "(j)"]
 
 for i in range(len(radii)):
 
@@ -34,8 +34,8 @@ for i in range(len(radii)):
 	plt.subplot(subplots[i])
 	plt.scatter(x,y, color = colors[i])
 	plt.title(titles[i])
-	plt.xlabel("Field Measurement")
-	plt.ylabel("Estimate")
+	plt.xlabel("Measured crown radius (m)")
+	plt.ylabel("Estimated crown radius (m)")
 	plt.axis([0,10,0,10])
 	plt.plot(x1,y1, color = '0.5')
 
@@ -71,10 +71,10 @@ for i in range(len(radii)):
 	mae = (sum(absresiduals))/ n
 	## adding txt to plots
 	plt.annotate("MAE = "+ str(round(mae,2)), xy = (6.5, 0.5))
-	plt.annotate("n = " + str(n), xy = (7.125,3.5))
+	plt.annotate("$n$ = " + str(n), xy = (7.125,3.5))
 	#plt.annotate("r = " + str(round(sprmn_r, 3)), xy = (7.25, 2.5))
 	plt.annotate("$R^2$ = " + str(round(r2, 2)), xy = (7, 2.5))
-	plt.annotate("p = " + str(round(float(pval),3)), xy = (7.125, 1.5))
+	plt.annotate("$p$ = " + str(round(float(pval),2)), xy = (7.125, 1.5))
 	plt.annotate(s = panels[i], xy = (0.3,9), fontweight = 'bold')
 
 

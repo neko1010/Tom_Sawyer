@@ -19,8 +19,8 @@ heights = [14, 17, 20, 23, 26]
 subplots = [321, 322, 323, 324, 325]
 colors = ["b", "g", "r", "magenta", "purple"]
 titles = ["RGB", "Green", "Red", "Red Edge", "NIR"]
-#panels = ["a", "b", "c", "d", "e"]
-panels = ["f", "g", "h", "i", "j"]
+#panels = ["(a)", "(b)", "(c)", "(d)", "(e)"]
+panels = ["(f)", "(g)", "(h)", "(i)", "(j)"]
 
 
 
@@ -37,8 +37,8 @@ for i in range(len(heights)):
 	plt.subplot(subplots[i])
 	plt.scatter(x,y, color = colors[i])#, '+')
 	plt.title(titles[i])
-	plt.xlabel("Field Measurement")
-	plt.ylabel("Estimate")
+	plt.xlabel("Measured crown height (m)")
+	plt.ylabel("Estimated crown height (m)")
 	plt.axis([0,30,0,30])
 	plt.plot(x1,y1, color = '0.5')
 
@@ -73,11 +73,11 @@ for i in range(len(heights)):
 	n = len(absresiduals)
 	mae = (sum(absresiduals))/ n
 	## adding txt to plots
-	plt.annotate("MAE = "+ str(round(mae,2)), xy = (18, 2))
-	plt.annotate("n = " + str(n), xy = (21, 14))
+	plt.annotate("MAE = "+ str(round(mae,2)), xy = (19.5, 2))
+	plt.annotate("$n$ = " + str(n), xy = (21, 14))
 	#plt.annotate("r = " + str(round(sprmn_r, 2)), xy = (21.25, 10))
 	plt.annotate("$R^2$ = " + str(round(r2, 2)), xy = (20.25, 10))
-	plt.annotate("p = " + str(round(float(pval),3)), xy = (21, 6))
+	plt.annotate("$p$ = " + str(round(float(pval),2)), xy = (21, 6))
 	plt.annotate(s = panels[i], xy = (1,26), fontweight = 'bold')
 	#plt.annotate(s = "f", xy = (1,26), fontweight = 'bold')
 
